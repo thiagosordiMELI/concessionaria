@@ -33,7 +33,6 @@ public class VehicleController {
     @GetMapping("/dates")
     public ResponseEntity<List<Vehicle>> listVehicles(@RequestParam @DateTimeFormat(pattern="yyyy-MM-dd") Date since,
                                                       @RequestParam @DateTimeFormat(pattern="yyyy-MM-dd") Date to){
-        System.out.println(since);
         List<Vehicle> vehicles = repository.filterVehicles(since, to);
         return new ResponseEntity(vehicles, HttpStatus.OK);
     }

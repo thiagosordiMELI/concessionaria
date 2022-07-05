@@ -1,5 +1,6 @@
 package com.concessionaria.concessionaria.repository;
 
+import com.concessionaria.concessionaria.exception.VehicleNotFoundException;
 import com.concessionaria.concessionaria.model.Vehicle;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.stereotype.Repository;
@@ -52,7 +53,7 @@ public class VehicleRepository {
         } catch (IOException e) {
             e.printStackTrace();
         }
-        return null;
+        throw new VehicleNotFoundException("Veiculos com datas entre "+since+" e "+to+" não foram encontrados");
     }
 
     public List<Vehicle> filterVehicles(float since, float to) {
@@ -65,7 +66,7 @@ public class VehicleRepository {
         } catch (IOException e) {
             e.printStackTrace();
         }
-        return null;
+        throw new VehicleNotFoundException("Veiculos com valores entre "+since+" e "+to+" não foram encontrados");
     }
 
     public Vehicle get(int id) {
@@ -81,6 +82,6 @@ public class VehicleRepository {
         } catch (IOException e) {
             e.printStackTrace();
         }
-        return null;
+        throw new VehicleNotFoundException("Veiculo com id "+id+" não encontrado");
     }
 }

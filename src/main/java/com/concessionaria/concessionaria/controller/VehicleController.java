@@ -45,7 +45,7 @@ public class VehicleController {
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<Vehicle> listVehicles(@PathVariable int id){
+    public ResponseEntity<Vehicle> getVehicle(@PathVariable int id){
         Vehicle vehicle = repository.get(id);
         return new ResponseEntity(vehicle, HttpStatus.OK);
     }
